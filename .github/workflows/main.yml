@@ -1,0 +1,19 @@
+name: Test JavaScript File
+on: [push]
+
+jobs:
+  test-hello:
+    runs-on: windows-latest 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify Node.js is installed
+        run: node --version
+
+      - name: Run hello.js
+        run: node hello.js
+
+      - name: Success
+        if: success()
+        run: echo "✅ CI/CD worked! My JavaScript file ran correctly."
